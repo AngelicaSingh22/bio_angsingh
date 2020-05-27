@@ -11,6 +11,7 @@ namespace CodingChallenge.Data.Classes
         public static readonly int tipoCuadrado = (int)Form.TipoCuadrado;
         public static readonly int tipoCirculo = (int)Form.TipoCirculo;
         public static readonly int tipotrianguloEquilatero = (int)Form.TipoTrianguloEquilatero;
+        public static readonly int tipoRectangulo = (int)Form.TipoRectangulo;
         public static readonly int idiomaIngles = (int)Idiomas.Ingles;
 
         public int Tipo { get; set; }
@@ -35,14 +36,17 @@ namespace CodingChallenge.Data.Classes
                 var numeroCuadrados = 0;
                 var numeroCirculos = 0;
                 var numeroTriangulos = 0;
+                var numeroRectangulos= 0;
 
                 var areaCuadrados = 0m;
                 var areaCirculos = 0m;
                 var areaTriangulos = 0m;
+                var areaRectangulos = 0m;
 
                 var perimetroCuadrados = 0m;
                 var perimetroCirculos = 0m;
                 var perimetroTriangulos = 0m;
+                var perimetroRectangulos = 0m;
 
                 for (var i = 0; i < formas.Count; i++)
                 {
@@ -67,22 +71,30 @@ namespace CodingChallenge.Data.Classes
                         areaTriangulos += trianguloEquilatero.CalcularArea();
                         perimetroTriangulos += trianguloEquilatero.CalcularPerimetro();
                     }
+                    if (formas[i].Tipo == tipoRectangulo)
+                    {
+                        numeroRectangulos++;
+                        var rectangulo = ((Rectangulo)formas[i]);
+                        areaRectangulos += rectangulo.CalcularArea();
+                        perimetroRectangulos += rectangulo.CalcularPerimetro();
+                    }
                 }
                 
                 sb.Append(Cuadrado.ObtenerLinea(numeroCuadrados, areaCuadrados, perimetroCuadrados, idioma));
                 sb.Append(Circulo.ObtenerLinea(numeroCirculos, areaCirculos, perimetroCirculos, idioma));
                 sb.Append(TrianguloEquilatero.ObtenerLinea(numeroTriangulos, areaTriangulos, perimetroTriangulos, idioma));
+                sb.Append(Rectangulo.ObtenerLinea(numeroRectangulos, areaRectangulos, perimetroRectangulos, idioma));
 
                 // FOOTER
                 sb.Append(Constants.TOTAL);
 
-                sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + Constants.SPACE_WHITE + 
+                sb.Append(numeroCuadrados + numeroCirculos + numeroTriangulos + numeroRectangulos + Constants.SPACE_WHITE + 
                     GetIdioma(idioma, Constants.ES_FORMAS, Constants.EN_FORMAS) + Constants.SPACE_WHITE);
 
                 sb.Append(GetIdioma(idioma, Constants.ES_PERIMETRO, Constants.EN_PERIMETRO) + 
-                    (perimetroCuadrados + perimetroTriangulos + perimetroCirculos).ToString(Constants.FORMAT_DECIMAL) + Constants.SPACE_WHITE);
+                    (perimetroCuadrados + perimetroTriangulos + perimetroCirculos + perimetroRectangulos).ToString(Constants.FORMAT_DECIMAL) + Constants.SPACE_WHITE);
 
-                sb.Append(Constants.AREA + (areaCuadrados + areaCirculos + areaTriangulos).ToString(Constants.FORMAT_DECIMAL));
+                sb.Append(Constants.AREA + (areaCuadrados + areaCirculos + areaTriangulos + areaRectangulos).ToString(Constants.FORMAT_DECIMAL));
             }
 
             return sb.ToString();

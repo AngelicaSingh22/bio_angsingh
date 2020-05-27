@@ -17,6 +17,11 @@
         public static readonly string EN_TRIANGULO_EQUILATERO_SINGULAR = "Triangle";
         public static readonly string EN_TRIANGULO_EQUILATERO_PLURAL = "Triangles";
 
+        public static readonly string EN_RECTANGULO_SINGULAR = "Rectangle";
+        public static readonly string EN_RECTANGULO_PLURAL = "Rectangles";
+        public static readonly string ES_RECTANGULO_SINGULAR = "Rectangulo";
+        public static readonly string ES_RECTANGULO_PLURAL = "Rectangulos";
+
         public static readonly string ES_HEADER_EMPTY = "<h1>Lista vacía de formas!</h1>";
         public static readonly string EN_HEADER_EMPTY = "<h1>Empty list of shapes!</h1>";
 

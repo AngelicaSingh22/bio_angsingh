@@ -6,5 +6,6 @@
         TipoTrianguloEquilatero = 2,
         TipoCirculo = 3,
         TipoTrapecio = 4,
+        TipoRectangulo = 5
     }
 }
